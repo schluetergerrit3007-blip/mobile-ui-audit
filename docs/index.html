@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile UI Audit – Roblox Studio plugin</title>
+<meta name="description" content="One click in Roblox Studio finds the UI problems phone players see: buttons too small to tap, text cut off, panels under the top bar.">
+<style>
+:root{--bg:#120a24;--card:#241640;--ink:#f4f0ff;--muted:#c9c2e8;--accent:#1fe0d0;--warn:#ff4f5e;--gold:#ffd23f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:860px;margin:0 auto;padding:40px 16px 64px}
+h1{font-size:clamp(28px,6vw,44px);line-height:1.1;margin:0 0 12px}h2{margin-top:44px}
+.lead{color:var(--muted);font-size:19px;max-width:640px}
+.card{background:var(--card);border-radius:14px;padding:18px 20px;margin:14px 0}
+code,pre{font-family:ui-monospace,Consolas,monospace}pre{background:#0b0618;border-radius:10px;padding:14px;overflow-x:auto;font-size:13px;color:#d7fff9}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.tag{display:inline-block;font-weight:700;font-size:12px;padding:2px 8px;border-radius:6px;color:#120a24}
+.price{font-size:34px;font-weight:800;color:var(--gold)}
+a{color:var(--accent)}.btn{display:inline-block;background:var(--accent);color:#120a24;font-weight:800;text-decoration:none;padding:12px 20px;border-radius:12px;margin-top:8px}
+.muted{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>Mobile UI Audit</h1>
+<p class="lead">One click in Roblox Studio shows the UI problems your phone players hit: buttons too small to tap, text that is cut off, panels hiding under the top bar or past the screen edge.</p>
+
+<div class="card">
+<strong>Real result on a real game</strong> (our own Roblox game, Samsung Galaxy A06 in the Device Simulator):
+<pre>1 issue(s)
+[OFFSCREEN] BRB_HUD.Compass · 240x16 at 232,-14 · screen 705x280 (partly outside or under the top bar)</pre>
+<span class="muted">The compass sat 14 px under Roblox's top bar on small phones. We missed it for weeks while looking at screenshots by eye.</span>
+</div>
+
+<h2>What it checks</h2>
+<div class="grid">
+<div class="card"><span class="tag" style="background:#ff4646">OFFSCREEN</span><p>Visible elements that cross the screen edge or sit under the top bar.</p></div>
+<div class="card"><span class="tag" style="background:#ffa028">SMALL_TARGET</span><p>Buttons smaller than 44 × 44 px, too small for thumbs.</p></div>
+<div class="card"><span class="tag" style="background:#ffdc3c">TEXT_CLIPPED</span><p>Text that does not fit its box (TextFits = false).</p></div>
+<div class="card"><span class="tag" style="background:#c878ff">TINY_TEXT</span><p>Text under 11 px that phone players cannot read.</p></div>
+<div class="card"><span class="tag" style="background:#ff50c8">TARGET_OVERLAP</span><p>Two buttons covering each other, so taps hit the wrong one.</p></div>
+<div class="card"><span class="tag" style="background:#1fe0d0">NEXT PHONE</span><p>One button cycles the Device Simulator: small Android, iPhone, iPad, off.</p></div>
+</div>
+
+<h2>How it works</h2>
+<ol>
+<li>Press <b>Next phone</b>. The viewport becomes a Galaxy A06 (705 × 338), the smallest common phone.</li>
+<li>Press <b>Audit</b>. Every finding gets a red outline with its label, and the Output shows a list with the path of each element.</li>
+<li>Works in Edit (StarterGui) and in Play (your live PlayerGui, including UI created by scripts).</li>
+</ol>
+<p class="muted">Read-only: it never changes your UI. Empty layout frames and Roblox's own touch controls are ignored, so you only see real problems.</p>
+
+<h2>Price</h2>
+<div class="card">
+<div class="price">$4.99</div>
+<p>One-time purchase, coming to the Roblox Creator Store. Not on sale yet.</p>
+<a class="btn" href="https://github.com/schluetergerrit3007-blip/mobile-ui-audit/issues/1">I want it: tell me when it is live</a>
+<p class="muted">The button opens a GitHub thread. A 👍 or a comment tells us you want it. No payment and no email is collected here.</p>
+</div>
+</main>
+</body>
+</html>
