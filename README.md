@@ -6,10 +6,10 @@ One click in Roblox Studio shows the UI problems your **phone players** hit: but
 
 ```
 1 issue(s)
-[OFFSCREEN] BRB_HUD.Compass · 240x16 at 232,-14 · screen 705x280 (partly outside or under the top bar)
+[TOPBAR_ZONE] BRB_HUD.Compass · reaches 14 px into the top bar: fine only where Roblox shows no buttons
 ```
 
-The compass sat 14 px under Roblox's top bar on small phones. Nobody noticed it on screenshots.
+The compass reaches 14 px into the top bar. Full example: [sample report](docs/sample-report.md).
 
 ## Checks
 | Label | Finds |
@@ -29,6 +29,15 @@ Works in Edit mode (StarterGui) and in Play mode (your live PlayerGui, including
 
 It only reads: your UI is never changed. Empty layout frames and Roblox's own touch controls are skipped, so only real problems show up.
 
-## Price and status
-**$4.99** one-time, planned for the Roblox Creator Store. **Not on sale yet.**
-Want it? Give a 👍 on [issue #1](../../issues/1). That is how we count interest. No payment or email is collected here.
+## Get your game checked (service)
+We run the audit on **your** game on three devices (small Android phone, iPhone, iPad) and send you the results.
+
+| Package | You get | Price |
+|---|---|---|
+| **Audit report** | All findings with element paths, a screenshot per device, a prioritised fix list | **$19** |
+| **Audit + fixes** | The report, plus we fix the findings in a copy of your place (Scale/UISizeConstraint/TextScaled, larger touch targets) and send it back | **$49** |
+
+**How to order:** open an issue titled **"Order: audit"** with your game link (or a .rbxl file) and the package. We reply within 24 h with the delivery date and payment details. You pay only after we confirm.
+
+## Plugin
+**$4.99** one-time, planned for the Roblox Creator Store, **not on sale yet**. Want it? Give a 👍 on [issue #1](../../issues/1). That is how we count interest.
