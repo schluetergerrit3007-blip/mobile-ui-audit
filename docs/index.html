@@ -25,12 +25,20 @@ a{color:var(--accent)}.btn{display:inline-block;background:var(--accent);color:#
 <h1>Mobile UI Audit</h1>
 <p class="lead">One click in Roblox Studio shows the UI problems your phone players hit: buttons too small to tap, text that is cut off, panels hiding under the top bar or past the screen edge.</p>
 
-<div class="card">
-<strong>Real result on a real game</strong> (our own Roblox game, Samsung Galaxy A06 in the Device Simulator):
-<pre>1 issue(s)
-[OFFSCREEN] BRB_HUD.Compass · 240x16 at 232,-14 · screen 705x280 (partly outside or under the top bar)</pre>
-<span class="muted">Our compass reaches 14 px into Roblox's top bar on small phones. <a href="https://github.com/schluetergerrit3007-blip/mobile-ui-audit/blob/main/docs/sample-report.md">See the full sample report</a>.</span>
+<h2>Before and after (Galaxy A06, real game running)</h2>
+<div class="grid">
+<div class="card"><b>Before: 5 problems</b><img src="before.jpg" alt="Shop window built on PC: runs off the phone screen, BUY and GIFT cut off, title clipped" style="width:100%;border-radius:8px;margin-top:8px">
+<pre>[OFFSCREEN] ShopPanel · 620x360 at 200,40
+[SMALL_TARGET] Close · 28x28 px
+[TARGET_OVERLAP] Buy · overlaps Gift
+[TEXT_CLIPPED] Title
+[TINY_TEXT] FinePrint · TextSize 9</pre></div>
+<div class="card"><b>After the fix: 0 problems</b><img src="after.jpg" alt="Same shop after the fix: fits the phone, 44 px close button, BUY and GIFT side by side" style="width:100%;border-radius:8px;margin-top:8px">
+<pre>[TOPBAR_ZONE] Compass · reaches 14 px
+into the top bar (deliberate, centre)</pre>
+<span class="muted">Fix: Scale sizing with UISizeConstraint, a 44 px close button, buttons anchored side by side, TextScaled title.</span></div>
 </div>
+<p class="muted"><a href="https://github.com/schluetergerrit3007-blip/mobile-ui-audit/blob/main/docs/sample-report.md">Full sample report</a></p>
 
 <h2>What it checks</h2>
 <div class="grid">
